@@ -1,0 +1,90 @@
+-----------------------------------------------
+-- Set up
+-----------------------------------------------
+
+local hyper = {"cmd", "ctrl"}
+
+hs.window.animationDuration = 0
+
+-----------------------------------------------
+-- hyper d for left one half window
+-----------------------------------------------
+
+hs.hotkey.bind(hyper, 'Left', function()
+    if hs.window.focusedWindow() then
+        local win = hs.window.focusedWindow()
+        local f = win:frame()
+        local screen = win:screen()
+        local max = screen:frame()
+        if f.x == max.x and f.y == max.y and f.w <= max.w/2 then
+            screen = screen:previous()
+            max = screen:frame()
+            f.x = max.x + (max.w / 2)
+        else
+            f.x = max.x
+        end
+        f.y = max.y
+        f.w = max.w / 2
+        f.h = max.h
+        win:setFrame(f)
+    else
+        hs.alert.show("No active window")
+    end
+end)
+
+-----------------------------------------------
+-- hyper g for right one half window
+-----------------------------------------------
+
+hs.hotkey.bind(hyper, 'Right', function()
+    if hs.window.focusedWindow() then
+        local win = hs.window.focusedWindow()
+        local f = win:frame()
+        local screen = win:screen()
+        local max = screen:frame()
+        if f.x == (max.x + (max.w/2)) and f.y == max.y then
+            screen = screen:next()
+            max = screen:frame()
+            f.x = max.x
+        else
+            f.x = max.x + (max.w / 2)
+        end
+        f.y = max.y
+        f.w = max.w / 2
+        f.h = max.h
+        win:setFrame(f)
+    else
+        hs.alert.show("No active window")
+    end
+end)
+
+-----------------------------------------------
+-- hyper f for fullscreen
+-----------------------------------------------
+
+hs.hotkey.bind(hyper, 'Up', function()
+    if hs.window.focusedWindow() then
+        local win = hs.window.focusedWindow()
+        local f = win:frame()
+        local screen = win:screen()
+        local max = screen:frame()
+
+        f.x = max.x
+        f.y = max.y
+        f.w = max.w
+        f.h = max.h
+        win:setFrame(f)
+    else
+        hs.alert.show("No active window")
+    end
+end)
+
+-----------------------------------------------
+-- Reload config on write
+-----------------------------------------------
+
+function reload_config(files)
+    hs.reload()
+end
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
+hs.alert.show("Config loaded")
