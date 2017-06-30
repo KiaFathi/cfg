@@ -1,6 +1,9 @@
 " Plugins Start
 call plug#begin('~/.vim/plugged')
 
+" Language Recognition
+Plug 'sheerun/vim-polyglot'
+
 " Color Scheme
 Plug 'joshdick/onedark.vim'
 
