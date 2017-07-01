@@ -1,11 +1,34 @@
 " Plugins Start
 call plug#begin('~/.vim/plugged')
 
+" Filesystem Navigation
+Plug 'scrooloose/nerdtree'
+
 " Language Recognition
 Plug 'sheerun/vim-polyglot'
 
+" Easy Commenting
+Plug 'tpope/vim-commentary'
+
+" Vim Surround
+Plug 'tpope/vim-surround'
+
+" Git Gutter
+Plug 'airblade/vim-gitgutter'
+
+" File Linting
+Plug 'w0rp/ale'
+
 " Color Scheme
 Plug 'joshdick/onedark.vim'
+
+" Auto Tab Editing
+Plug 'godlygeek/tabular'
+
+" Language Support
+Plug 'plasticboy/vim-markdown'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " Plugins End
 call plug#end()
@@ -14,7 +37,7 @@ call plug#end()
 set nocompatible              
 
 " Filetype checking on
-filetype on
+filetype off
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -65,6 +88,9 @@ set noswapfile
 set shiftwidth=2
 set tabstop=2
 
+" Clipboard Setup
+set clipboard+=unnamedplus
+
 " Syntax & Theme
 syntax on
 colorscheme onedark
@@ -78,6 +104,16 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+" Plugin Configuration
+" vim-jsx configuration
+let g:jsx_ext_required = 0
+
+" vim-markdown configuration
+let g:vim_markdown_folding_disabled = 1
+
+" NerdTree Configuration
+let NERDTreeShowHidden=1
 
 " DISABLE ARROW KEYS
 noremap <Up> <NOP>
