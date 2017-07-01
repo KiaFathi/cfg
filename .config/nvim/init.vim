@@ -106,14 +106,19 @@ if (empty($TMUX))
 endif
 
 " Plugin Configuration
-" vim-jsx configuration
+" vim-jsx 
 let g:jsx_ext_required = 0
 
 " vim-markdown configuration
 let g:vim_markdown_folding_disabled = 1
 
-" NerdTree Configuration
+" NerdTree 
 let NERDTreeShowHidden=1
+
+" Ale 
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
 
 " DISABLE ARROW KEYS
 noremap <Up> <NOP>
