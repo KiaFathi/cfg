@@ -22,9 +22,6 @@ Plug 'w0rp/ale'
 " Color Scheme
 Plug 'joshdick/onedark.vim'
 
-" Auto Tab Editing
-Plug 'godlygeek/tabular'
-
 " Language Support
 Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
@@ -37,7 +34,7 @@ call plug#end()
 set nocompatible              
 
 " Filetype checking on
-filetype off
+filetype on
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -116,9 +113,10 @@ let g:vim_markdown_folding_disabled = 1
 let NERDTreeShowHidden=1
 
 " Ale 
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_open_list = 1
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 
 " DISABLE ARROW KEYS
 noremap <Up> <NOP>
