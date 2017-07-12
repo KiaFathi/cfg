@@ -113,6 +113,7 @@ let g:vim_markdown_folding_disabled = 1
 let NERDTreeShowHidden=1
 
 " Ale 
+let g:ale_open_list = 1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fix_on_save = 1
